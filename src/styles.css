@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lacquer|Roboto&display=swap');
+
 img{
   width: 20vw;
   height: auto;
@@ -5,4 +7,42 @@ img{
 
 .hidden {
   display: none;
+}
+
+/*!
+ * Start Bootstrap - Stylish Portfolio v5.0.7 (https://startbootstrap.com/template-overviews/stylish-portfolio)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-stylish-portfolio/blob/master/LICENSE)
+ */
+
+ body,
+ html {
+   width: 100%;
+   height: 100%;
+ 
+ }
+  h1,h2,h4,h5,h6{
+    font-family: 'Lacquer', sans-serif;
+    color: crimson;
+  }
+ body {
+
+  min-height: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url('https://i.redd.it/5pr2d6fopii31.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+p{
+  font-family: 'Roboto', sans-serif;
+  color: crimson;
 }

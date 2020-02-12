@@ -11,22 +11,10 @@ import { RealCat } from './trueCat-service';
 
 $(document).ready(function () {
   let game = new Game;
+  let rand = Math.round(Math.random());
   $('.btn').click(event=>{
     (async () => {
-      game.catArray = [];
-      let fakeCat = new FakeCat();
-      let realCat = new RealCat();
-      await fakeCat.getFakeCat();
-      await realCat.getRealCat();
-      game.addFake(fakeCat.cat);
-      game.addReal(realCat.cat);
-      let rand = Math.round(Math.random());
-      console.log('rand:',rand);
-      console.log(game.catArray);
-            
-      $('#fake').attr('src', game.catArray[rand]);
-      console.log(event.target.id);
-            
+                      
       if (rand === 0 && event.target.id === 'fake'){
         game.score += 1;
         
@@ -34,15 +22,21 @@ $(document).ready(function () {
         game.score += 1;
       }
       $('#score').text(game.score)
-      
+     
+      game.catArray = [];
+      let fakeCat = new FakeCat();
+      let realCat = new RealCat();
+      await fakeCat.getFakeCat();
+      await realCat.getRealCat();
+      game.addFake(fakeCat.cat);
+      game.addReal(realCat.cat);
+      rand = Math.round(Math.random());
+      $('#fake').attr('src', game.catArray[rand]);
+     
+            
       
     })();
-           
-           
-    //   $('#real').attr('src', game.realCat)
-           
-           
-           
+                
   });
   $('#startButton').click(() => {
     (async () => {
@@ -53,13 +47,9 @@ $(document).ready(function () {
       await realCat.getRealCat();
       game.addFake(fakeCat.cat);
       game.addReal(realCat.cat);
-      let rand = Math.round(Math.random());
-      console.log(rand);
-      console.log(game.catArray);
             
       $('#fake').attr('src', game.catArray[rand]);
     })();
-    console.log("button works!");
     $('.game').removeClass('hidden');
     $('.startingScreen').addClass('hidden');
   });

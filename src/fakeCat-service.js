@@ -1,15 +1,20 @@
 
 export class FakeCat{
-  constructor(id) {
+  constructor() {
     this.cat = '';
-    this.id = 'fake';
+  
   }
   
   async getFakeCat() {
     try {
       let response = await fetch(`https://thiscatdoesnotexist.com/`);
       let {url} = await response;
-      this.cat = url;
+      if(url === 'https://thiscatdoesnotexist.com/'){
+        this.cat = url;
+      }else{
+        console.error("ERROR ERROR! The Api DIDNT send a cat " )
+      }
+     
     } catch (error) {
       console.error("ERROR ERROR!" + error.message);
     }
