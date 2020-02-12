@@ -26,13 +26,18 @@ $(document).ready(function () {
             
             $('#fake').attr('src', game.catArray[rand])
            })()
-
-          
-        //   $('#real').attr('src', game.realCat)
-
-
-
-      })
+           
+           
+           //   $('#real').attr('src', game.realCat)
+           
+           
+           
+        })
+               $('#startButton').click(() => {
+                   console.log("button works!")
+                   $('.game').removeClass('hidden');
+                   $('.startingScreen').addClass('hidden');
+               });
 
 
     })

@@ -2,3 +2,7 @@ img{
   width: 20vw;
   height: auto;
 }
+
+.hidden {
+  display: none;
+}
