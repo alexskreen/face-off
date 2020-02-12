@@ -1,19 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Lacquer|Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lacquer|Orbitron|Roboto&display=swap');
 
 img{
   width: 20vw;
   height: auto;
 }
-
-.hidden {
-  display: none;
-}
-
-/*!
- * Start Bootstrap - Stylish Portfolio v5.0.7 (https://startbootstrap.com/template-overviews/stylish-portfolio)
- * Copyright 2013-2019 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-stylish-portfolio/blob/master/LICENSE)
- */
 
  body,
  html {
@@ -26,7 +16,6 @@ img{
     color: crimson;
   }
  body {
-
   min-height: 30rem;
   display: flex;
   flex-direction: column;
@@ -42,7 +31,43 @@ img{
   background-size: cover;
   
 }
+h3{
+  font-family: 'Orbitron', sans-serif;
+  color: crimson;
+  font-weight: 9000;
+}
 p{
   font-family: 'Roboto', sans-serif;
   color: crimson;
+}
+.game-display{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-container{
+  margin: 2vh 0;
+}
+.btn-container button{
+  width: 10vw;
+}
+
+#startButton {
+  box-shadow: 10px 10px 34px -1px rgba(255, 255, 255, 0.75)
+}
+.startingScreen{
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+}
+
+#scoreBoard {
+  font-family: 'orbitron';
+  color: indianred;
+}
+
+.hidden {
+  display: none;
 }
