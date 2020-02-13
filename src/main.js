@@ -6,9 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FakeCat } from './fakeCat-service';
 import { Game } from './game';
 import { RealCat } from './trueCat-service';
-
-
-
+ let storedLeaderBoard = JSON.parse(localStorage.getItem('storedLeaderBoard')|| "[]");
+ 
+  
 $(document).ready(function () {
   let game = new Game;
   let rand = Math.round(Math.random());
@@ -59,15 +59,22 @@ $(document).ready(function () {
 
   $(".user-info-form").submit(event=>{
     event.preventDefault();
-    let name = $("input#userInput").val()
+    let initials = $("input#userInput").val()
     game.addScore(name);
+    console.log(game.leaderBoard);
+    
+    localStorage.setItem('storedLeaderBoard', JSON.stringify(game.leaderBoard))
+    storedLeaderBoard.push({initials, score: game.score})
+    localStorage.setItem('storedLeaderBoard', JSON.stringify(storedLeaderBoard))
+
+
+
     $('ol#scoreBoard').empty();
-    game.leaderBoard.forEach(element => {
+    
+    storedLeaderBoard.forEach(element => {
       $('ol#scoreBoard').append(`<li> ${element.initials} score: ${element.score}</li>`);
     });
     $('.userInfo').addClass('hidden');
     $('#score').text(game.score)
   })
-
-
 });
