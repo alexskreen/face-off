@@ -8,7 +8,11 @@ import { Game } from './game';
 import { RealCat } from './trueCat-service';
 import { CatFact } from './catFacts-service';
  let storedLeaderBoard = JSON.parse(localStorage.getItem('storedLeaderBoard')|| "[]");
- 
+ function getCatFact(fact){
+   console.log(fact);
+   
+   $(".catFact").html(fact);
+ }
   
 $(document).ready(function () {
   let game = new Game;
@@ -24,20 +28,25 @@ $(document).ready(function () {
       }else{
         $('#wrong').removeClass('hidden');
         $('.userInfo').removeClass('hidden');
+        $('.game').addClass('hidden');
+        $('btn-ans').addClass('hidden');
       }
       $('#score').text(game.score)
       game.catArray = [];
       let fakeCat = new FakeCat();
       let realCat = new RealCat();
+      let catFact = new CatFact();
       await fakeCat.getFakeCat();
       await realCat.getRealCat();
+      await catFact.getCatFact();
       setTimeout(()=>{
-        $(".stamp").addClass('hidden')
+        $("#right").addClass('hidden')
         game.addFake(fakeCat.cat);
         game.addReal(realCat.cat);
         rand = Math.round(Math.random());
         $('#fake').attr('src', game.catArray[rand]);   
       }, 250)
+      getCatFact(catFact.fact);
     })();
                 
   });
@@ -49,10 +58,10 @@ $(document).ready(function () {
       let catFact = new CatFact();
       await fakeCat.getFakeCat();
       await realCat.getRealCat();
-      let testVar = await catFact.getCatFact();
+       await catFact.getCatFact();
       game.addFake(fakeCat.cat);
       game.addReal(realCat.cat);
-     console.log(catFact.fact);
+     getCatFact(catFact.fact);
       
 
             
@@ -66,19 +75,26 @@ $(document).ready(function () {
   $(".user-info-form").submit(event=>{
     event.preventDefault();
     let initials = $("input#userInput").val()
-    game.addScore(name);
-    console.log(game.leaderBoard);
+    $('.game').removeClass('hidden');
+    $('btn-ans').removeClass('hidden');
+    $('#wrong').addClass('hidden');
     
     localStorage.setItem('storedLeaderBoard', JSON.stringify(game.leaderBoard))
     storedLeaderBoard.push({initials, score: game.score})
+    console.log(game.score);
+    storedLeaderBoard.sort(function(a, b){return b.score-a.score})
     localStorage.setItem('storedLeaderBoard', JSON.stringify(storedLeaderBoard))
+    game.addScore(name);
 
 
-
+    $('.leader-cont').removeClass('hidden')
     $('ol#scoreBoard').empty();
+    // $('ol.leaderboard').empty();
     
     storedLeaderBoard.forEach(element => {
       $('ol#scoreBoard').append(`<li> ${element.initials} score: ${element.score}</li>`);
+      // $('ol#leaderboard').append(`<li> ${element.initials} score: ${element.score}</li>`);
+
     });
     $('.userInfo').addClass('hidden');
     $('#score').text(game.score)

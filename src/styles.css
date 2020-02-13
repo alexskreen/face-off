@@ -68,6 +68,32 @@ p{
   color: indianred;
 }
 
+.catFact {
+  color: antiquewhite;
+}
+
+.leader-cont{
+  margin: 2rem 0;
+  padding: 2rem;
+  height: 200px;
+  border: 1px grey solid;
+  background-color: rgba(128, 128, 128, 0.205);
+  border-radius: 1rem;
+  overflow: auto;
+}
+.leader-cont h2{
+  font-family: 'Orbitron', sans-serif;
+  color: crimson;
+  font-weight: 9000;
+}
+.leader-cont::-webkit-scrollbar {
+  width: 1em;
+}
+  
+
+
+
+
 .hidden {
   display: none;
 }

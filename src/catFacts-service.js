@@ -11,7 +11,7 @@ export class CatFact {
             if (body.used === true) {
                 console.error("ERROR ERROR! The Api DIDNT send a cat fact")
             } else if (!body.used) {
-                this.CatFact = body.text;
+                this.fact = body.text;
                 // console.log(this.CatFact);
                 
             }
