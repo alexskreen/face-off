@@ -21,13 +21,8 @@ $(document).ready(function () {
         game.score += 1;
         $('#right').removeClass('hidden');
       }else{
-        game.addScore();
         $('#wrong').removeClass('hidden');
-        $('#userInfo').removeClass('hidden')
-        $('ol#scoreBoard').empty();
-        game.leaderBoard.forEach(element => {
-          $('ol#scoreBoard').append("<li>" + element + "</li>");
-        });
+        $('.userInfo').removeClass('hidden');
       }
       $('#score').text(game.score)
       game.catArray = [];
@@ -37,14 +32,11 @@ $(document).ready(function () {
       await realCat.getRealCat();
       setTimeout(()=>{
         $(".stamp").addClass('hidden')
-       
         game.addFake(fakeCat.cat);
         game.addReal(realCat.cat);
         rand = Math.round(Math.random());
         $('#fake').attr('src', game.catArray[rand]);   
       }, 250)
-     
-      
     })();
                 
   });
@@ -64,6 +56,18 @@ $(document).ready(function () {
     $('.startingScreen').addClass('hidden');
     $('#pure-stupidity').addClass('hidden');
   });
+
+  $(".user-info-form").submit(event=>{
+    event.preventDefault();
+    let name = $("input#userInput").val()
+    game.addScore(name);
+    $('ol#scoreBoard').empty();
+    game.leaderBoard.forEach(element => {
+      $('ol#scoreBoard').append(`<li> ${element.initials} score: ${element.score}</li>`);
+    });
+    $('.userInfo').addClass('hidden');
+    $('#score').text(game.score)
+  })
 
 
 });
