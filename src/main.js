@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FakeCat } from './fakeCat-service';
 import { Game } from './game';
 import { RealCat } from './trueCat-service';
+import { CatFact } from './catFacts-service';
  let storedLeaderBoard = JSON.parse(localStorage.getItem('storedLeaderBoard')|| "[]");
  
   
@@ -45,10 +46,15 @@ $(document).ready(function () {
       game.catArray = [];
       let fakeCat = new FakeCat();
       let realCat = new RealCat();
+      let catFact = new CatFact();
       await fakeCat.getFakeCat();
       await realCat.getRealCat();
+      let testVar = await catFact.getCatFact();
       game.addFake(fakeCat.cat);
       game.addReal(realCat.cat);
+     console.log(catFact.fact);
+      
+
             
       $('#fake').attr('src', game.catArray[rand]);
     })();

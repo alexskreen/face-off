@@ -5,7 +5,7 @@ export class RealCat {
   
   async getRealCat() {
     try {
-      let response = await fetch(`https://api.thecatapi.com/v1/images/search?api_key=1ae12692-f73b-4770-83a3-ca15557bafa7`);
+      let response = await fetch(`https://api.thecatapi.com/v1/images/search?api_key=${process.env.REAL_CAT_KEY}`);
       let body = await response.json();  
       if(body.length === 1){
         this.cat = body[0].url;
